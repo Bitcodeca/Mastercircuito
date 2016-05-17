@@ -18,6 +18,7 @@
 	?>
 	
 	<body style="overflow-x:hidden; <?php echo $awesome_classes ?>">
+		<?php include_once("analyticstracking.php") ?>
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
