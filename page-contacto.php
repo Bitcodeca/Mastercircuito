@@ -1,194 +1,132 @@
 <?php get_header(); ?>
-
-          <div class="content-section-c" style="margin-top:50px">
-                <div class="row text-center">             
-                <h3 class="section-heading" style="color:black">Contáctanos</h3>
-      		    </div>
-       		</div>
-    <section id="contact-info">            
-        
-        <div class="gmap-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3 text-center" style="margin-top:5%;">
-                        <address>
-                            <h3><i class="glyphicon glyphicon-envelope"> </i> Emails:</h3>
-                            <p class="lead">
-								 <?php $args=array(
-									  'post_type'=> 'contactos',
-									  'post_status' => 'publish',
-									  'posts_per_page' => 30,
-									  'title' => 'emails'
-									 );
-								$my_query = new WP_Query($args);
-								if( $my_query->have_posts() ) {
-								  while ($my_query->have_posts()) : $my_query->the_post();
-										$titulo=  get_the_title();
-										if ($titulo == 'emails'){
-											echo the_content();
-										}
-								  endwhile;
-								}	 ?>						
-							</p>
-                            <h3 style="margin-top:50px;"><i class="glyphicon glyphicon-earphone"> </i> Teléfono:</h3>
-                            <p class="lead">
-								 <?php $args=array(
-									  'post_type'=> 'contactos',
-									  'post_status' => 'publish',
-									  'posts_per_page' => 30,
-									  'title' => 'telefonos'
-									 );
-								$my_query = new WP_Query($args);
-								if( $my_query->have_posts() ) {
-								  while ($my_query->have_posts()) : $my_query->the_post();
-										$titulo=  get_the_title();
-										if ($titulo == 'telefonos'){
-											echo the_content();
-										}
-								  endwhile;
-								}	 ?>						
-							</p>
-                        </address>
-                    </div>
-                    <div class=" col-md-offset-1 col-md-4">
-                        <div class="gmap">
-                  			  <div id="map-canvas" style="height:400px; width:400px"></div>
+<?php global $mltlngg_current_language; $lenguaje=explode('_', $mltlngg_current_language)[0]; ?>
+    <div class="parallax-container ppag">
+        <div class=parallax> <img src=<?php echo get_bloginfo('template_directory');?>/img/p2.jpg> </div>
+    </div>
+    <div class="margintop50" id="contacto"> 
+        <div class="container">
+                        <?php if($lenguaje=='es'){ ?>
+                            <h2 class="letra1 tituloini letravacia">Contacto</h2>
+                            <h2 class="letraazul letra1 tituloini">Contacto</h2>
+                        <? } else { ?>
+                            <h2 class="letra1 tituloini letravacia">Contact</h2>
+                            <h2 class="letraazul letra1 tituloini">Contact</h2>
+                        <?php } ?>
+        </div>
+    </div>
+    <div class="margintop50">
+        <div class="row">
+            <section id="contact-info">
+                <div class="gmap-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-4 text-center" style="margin-top:5%;">
+                                <address>
+                                    <h3 class="letra1 letraazul"><i class="material-icons">mail_outline</i> Emails:</h3>
+                                    <p class="lead">	
+                                        ventas@mastercircuito.com <br>
+                                        mastercircuitoca@cantv.net<br>
+                                        compras@mastercircuito.com<br>
+                                        mastercircuitoventas@gmail.com				
+                                    </p>
+                                    <h3 class="letra1 letraazul" style="margin-top:50px;"><i class="material-icons">phone</i> 
+                                        <?php if($lenguaje=='es'){ ?>
+                                            Teléfono:
+                                        <? } else { ?>
+                                            Phone Number:
+                                        <?php } ?>
+                                    </h3>
+                                    <p class="lead">	
+                                        0251-2372671 (Master)
+                                    </p>
+                                </address>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-4">
+                                <div class="gmap">
+                                      <iframe id="map-canvas" src="https://www.google.com/maps/d/embed?mid=1H35J3MhHIIAZlynhYtdqIh4_NPA"></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-4 text-center" style="margin-top:5%;">
+                                <address>
+                                    <h3 class="letra1 letraazul"><i class="material-icons verticalalign">inbox</i> Fax:</h3>
+                                    <p class="lead">			
+                                        0251-2370334<br>
+                                        0251-2375186
+                                    </p>                         
+                                    <h3 class="letra1 letraazul" style="margin-top:50px;"><i class="material-icons">location_on</i> 
+                                        <?php if($lenguaje=='es'){ ?>
+                                            Dirección:
+                                        <? } else { ?>
+                                            Direction:
+                                        <?php } ?>
+                                    </h3>
+                                    <p class="lead">	
+                                        Calle 25 con Carrera 5, Zona Industrial 1, Barquisimeto Edo. Lara. Venezuela
+                                    </p>
+                                </address>
+                            </div>
                         </div>
                     </div>
-                    <div class=" col-md-offset-1 col-md-3 text-center" style="margin-top:5%;">
-                        <address>
-                            <h3><i class="glyphicon glyphicon-print"> </i> Fax:</h3>
-                            <p class="lead">
-								 <?php $args=array(
-									  'post_type'=> 'contactos',
-									  'post_status' => 'publish',
-									  'posts_per_page' => 30,
-									  'title' => 'fax'
-									 );
-								$my_query = new WP_Query($args);
-								if( $my_query->have_posts() ) {
-								  while ($my_query->have_posts()) : $my_query->the_post();
-										$titulo=  get_the_title();
-										if ($titulo == 'fax'){
-											echo the_content();
-										}
-								  endwhile;
-								}	 ?>						
-							</p>                         
-                            <h3 style="margin-top:50px;"><i class="glyphicon glyphicon-map-marker"> </i> Dirección:</h3>
-                            <p class="lead">
-								 <?php $args=array(
-									  'post_type'=> 'contactos',
-									  'post_status' => 'publish',
-									  'posts_per_page' => 30,
-									  'title' => 'direccion'
-									 );
-								$my_query = new WP_Query($args);
-								if( $my_query->have_posts() ) {
-								  while ($my_query->have_posts()) : $my_query->the_post();
-										$titulo=  get_the_title();
-										if ($titulo == 'direccion'){
-											echo the_content();
-										}
-								  endwhile;
-								}	 ?>						
-							</p>
-                        </address>
-                    </div>
                 </div>
+            </section>
+        </div>
+        <div class="container margintop50">
+            <div class="row">
+                
+                        <div ng-controller=ContactController>
+                            <form ng-submit=submit(contactform) name=contactform method=post role=form> 
+                                
+                                <div class="col-xs-12">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <span class=input-field ng-class="{ 'has-error': contactform.empresa.$invalid && submitted }">
+                                            <input id=empresa type=text class=validate ng-model=formData.empresa placeholder=Empresa>
+                                        </span>
+                                        <span class=input-field ng-class="{ 'has-error': contactform.nombre.$invalid && submitted }">
+                                            <input id=nombre type=text class=validate ng-model=formData.nombre placeholder=Nombre>
+                                        </span>
+                                        <span class=input-field ng-class="{ 'has-error': contactform.telefono.$invalid && submitted }">
+                                            <input id=telefono type=number class=validate ng-model=formData.telefono placeholder=Teléfono>
+                                        </span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <span class=input-field ng-class="{ 'has-error': contactform.fax.$invalid && submitted }">
+                                            <input id=fax type=number class=validate ng-model=formData.fax placeholder=Fax>
+                                        </span>
+                                        <span class=input-field ng-class="{ 'has-error': contactform.email.$invalid && submitted }">
+                                            <input id=email type=email class=validate ng-model=formData.email placeholder=Email>
+                                        </span>
+                                        <span class=input-field ng-class="{ 'has-error': contactform.motivo.$invalid && submitted }">
+                                            <select ng-model=formData.motivo id="motivo" class="validate">
+                                              <option value="" disabled selected>Seleccionar Motivo</option>
+                                              <option value="compra">Compra</option>
+                                              <option value="venta">Venta</option>
+                                              <option value="gerencia">Gerencia</option>
+                                              <option value="otro">Otro</option>
+                                              <option value="gestion-de-calidad">Gestión de calidad</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="col-xs-12">
+                                        <div class=input-field ng-class="{ 'has-error': contactform.message.$invalid && submitted }">
+                                            <textarea id=message class=materialize-textarea ng-model=formData.message placeholder=Mensaje></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="center-align margintop25 marginbot10">
+                                    <button class="waves-effect btn-enviar waves-light btn amber darken-3" type=submit ng-disabled=submitButtonDisabled>ENVIAR</button>
+                                </div>
+                                
+                            </form>
+                            <p ng-class="result" style="padding: 15px; margin: 0;">{{ resultMessage }}</p>
+                        </div>
+                
             </div>
         </div>
-</section>
-
-<div class="content-section-b">
-            <div class="row">
-        <div class="container">
-  
-                    <div class="col-md-offset-1 col-md-10 col-xs-12">
-                        <form role="form" class="col-xs-12 col-md-12 go-right" action="<?php echo get_bloginfo('template_directory');?>/phpmailer/mail.php" method="post">
-                        	<div class="col-md-6 col-sm-12">
-                                    <h4 class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">Empresa *</h4>
-                                    <div class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">
-                                        <input id="empresa" name="empresa" type="text" class="form-control" required>
-                                    </div>
-                                    <h4 class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">Nombre *</h4>
-                                    <div class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">
-                                        <input id="name" name="name" type="text" class="form-control" required>
-                                    </div>
-                                    <h4 class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">Teléfono *</h4>
-                                    <div class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">
-                                        <input id="telefono" name="telefono" type="tel" class="form-control" required>
-                                    </div>
-                          </div>
-                             <div class="col-md-6 col-sm-12">
-                                    <h4 class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">Fax</h4>
-                                    <div class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">
-                                        <input id="fax" name="fax" type="tel" class="form-control">
-                                    </div>
-                                        <h4 class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="550ms">Correo *</h4>
-                                    <div class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="550ms">
-                                        <input id="email" name="email" type="email" class="form-control" required>
-                                    </div>
-                                    <h4 class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">Motivo *</h4>
-                                    <div class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">
-                                        <select id="motivo" name="motivo" class="form-control" required>
-                                          <option value="Compra">Compra</option>
-                                          <option value="Venta">Venta</option>
-                                          <option value="Gerencia">Gerencia</option>
-                                          <option value="Otro">Otro</option>
-                                          <option value="Gestion">Gestion de Calidad</option>
-                                        </select>
-                                    </div>
-                             </div>
-                             <div class="col-md-12">
-                                        <h4 class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="750ms">Mensaje *</h4>
-                                    <div class="wow fadeIn" data-wow-duration="900ms" data-wow-delay="750ms">
-                                        <textarea id="message" name="message" class="form-control" required style="height:200px"></textarea>
-                                    </div>
-                             </div>
-                             <div class="col-md-12">
-                            <center><button class="btn btn-mc wow fadeIn" type="submit" formtarget="_new" data-wow-duration="900ms" data-wow-delay="950ms" style="margin-top:50px"><i class="fa fa-send-o"> </i> Enviar</button></center>
-                            </div>
-                        </form>
-                    </div>
-            </div>
-        </div>   
-</div>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script>
-		function initialize() {
-		  var myLatlng = new google.maps.LatLng(10.081684, -69.348115);
-		  var mapOptions = {
-			zoom: 14,
-			center: myLatlng
-		  };
-		
-		  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		
-		  var contentString = '<div id="content">'+
-			  '<div id="siteNotice">'+
-			  '</div>'+
-			  '<h3 id="firstHeading" class="firstHeading">Master Circuito</h3>'+
-			  '<div id="bodyContent">'+
-			  '<p>Calle 25 con Carrera 5, Zona Industrial 1, Barquisimeto Edo. Lara</p>'+
-			  ''+
-			  '</div>'+
-			  '</div>';
-		
-		  var infowindow = new google.maps.InfoWindow({
-			  content: contentString
-		  });
-		
-		  var marker = new google.maps.Marker({
-			  position: myLatlng,
-			  map: map,
-			  title: 'Uluru (Ayers Rock)'
-		  });
-		  google.maps.event.addListener(marker, 'click', function() {
-			infowindow.open(map,marker);
-		  });
-		}
-		
-		google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    </div>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="<?php echo get_bloginfo('template_directory');?>/app.js"></script>
+    <script src="<?php echo get_bloginfo('template_directory');?>/controllers.js"></script>
 <?php get_footer(); ?>

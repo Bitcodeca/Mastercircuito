@@ -1,97 +1,40 @@
 <?php get_header(); ?>
-<div class="" style="margin-top:40px;">
-    <div class="container">
-			<hr class="section-heading-spacer2">
- 		   <center style="padding-bottom:50px"><div class="embed-responsive embed-responsive-16by9" id="video">
- 		   <iframe src="https://www.youtube.com/embed/KMMGiKYWcjA?rel=0&amp;showinfo=0" frameborder="1" allowfullscreen></iframe>
-           </div></center>
-           </div>
-<div class="banner6">
-</div>
-			<?php
-			$x='0';
-			$y='0';
-            $args = array('order'=> 'ASC', 'numberposts' => 1000 , 'orderby' => 'post_date', 'category_name' =>'quienes somos');
-            $postslist = get_posts( $args );
-            foreach ($postslist as $post) :  setup_postdata($post); 
-				$alltags=get_the_tags();
-				if ($x=='0') { if($y==0){ ?> <div class="content-section-a"><?php } else {  ?> <div class="content-section-b"> <?php } }
-				foreach($alltags as $latag){
-					
-					
-					
-					if( $latag->name=='derecha'){ $loquetu = get_the_title(); ?>
-                    		<div <?php if ($loquetu == 'Vision') {echo 'style="padding-top: -70px;"';} ?> class="container">
-                            
-									<div class="row">
-										  <div class="col-md-6 col-sm-12 wow fadeIn" <?php if ($loquetu == 'Mision') {echo 'style="padding-top: 70px;"';} ?>>
-                                          		<?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive wow fadeInLeft' , 'style' => 'padding-top: 4%' ) ); ?>
-										  </div>
-										  <div class="col-md-6 wow fadeIn">
-												<hr class="section-heading-spacer">
-												<div class="clearfix"></div>
-												<h2 class="section-heading"><?php the_title(); ?></h2>
-												<p class="lead"><?php the_content();  ?></p>
-										  </div> 
-									 </div>
-  							  </div>
-                              <br>
-                             
-                              
-					<?php $x++; if ($x=='2'){?></div> <div class="banner"></div> <?php $x='0'; if($y=='0'){$y++;}else{$y--;} } }
-						 if($latag->name=='izquierda'){ ?> 
-							<div class="container">
-								<div class="row">
-										  <div class="col-md-5 wow fadeIn">
-												<hr class="section-heading-spacer">
-												<div class="clearfix"></div>
-												<h2 class="section-heading"><?php the_title(); ?></h2>
-												<p class="lead"><?php the_content(); ?></p>
-										  </div>
-										  <div class="col-md-6 col-sm-12 col-md-offset-1 wow fadeIn">
-                                          		<?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive wow fadeInRight' , 'style' => 'padding-top: 4%' ) ); ?>
-										  </div>
-								 </div>
-   							</div>
-                                 <br>
-                                 
-                                 <?php $x++; if ($x=='2'){?></div> <div class="banner"></div> <?php $x='0'; if($y=='0'){$y++;}else{$y--;} } }
-						 if($latag->name=='trabajo'){ ?> 
-                         
-                         
-                             <div class="banner2" style=" padding:100px">
+<?php global $mltlngg_current_language; $lenguaje=explode('_', $mltlngg_current_language)[0]; ?>
+    <div class="parallax-container ppag">
+        <div class=parallax> <img src=<?php echo get_bloginfo('template_directory');?>/img/p4.jpg> </div>
     </div>
-    <div class="content-section-d">
-
+    <div class="margintop50" id="quienessomos"> 
         <div class="container">
-
-            <div class="row">
-                <div class="col-lg-12 col-sm-12 wow fadeIn text-center" data-wow-duration="900ms" data-wow-delay="350ms">
-                    <hr class="section-heading-spacer2">
-                    <div class="clearfix"></div>
-                      <h2 class="section-heading"><?php the_title(); ?></h2>
-                    <p class="lead" style="text-align:justify;"><?php the_content(); ?></p>
+                        <?php if($lenguaje=='es'){ ?>
+                            <h2 class="letra1 tituloini letravacia quienesosmostitulo">Quienes somos</h2>
+                            <h2 class="letraazul letra1 tituloini quienesosmostitulo2">Quienes somos</h2>
+                        <? } else { ?>
+                            <h2 class="letra1 tituloini letravacia quienesosmostitulo">Master Circuito</h2>
+                            <h2 class="letraazul letra1 tituloini quienesosmostitulo2">Master Circuito</h2>
+                        <?php } ?>
+        </div>
+    </div>
+    <div class="margintop50">
+        <?php $args=array('post_status' => 'publish', 'posts_per_page' => 100, 'order' => 'ASC', 'post_type'=>'post', 'category_name'=>'quienes-somos'); $my_query = new WP_Query($args);
+        if( $my_query->have_posts() ) {
+            $x=0;
+            while ($my_query->have_posts()) : 
+                $my_query->the_post();
+                $id = get_the_ID();
+                global $dynamic_featured_image;
+                $nth_image = $dynamic_featured_image -> get_all_featured_images( $id );
+                $num=count($nth_image); ?>
+                <div class="<?php if($x==1){ echo "fondogris cogbl"; } else { echo"cogtr";} ?>">
+                    <div class="container margintop25 paddingtop25 paddingbot25">
+                        <div class="row contenido">
+                            <div class="col-xs-12">
+                                <img src="<?php echo $nth_image[0]['full']; ?>" class="<?php if($x==0){ echo "left";} else { echo "right"; } ?> responsive-img z-depth-1">
+                                <h2 class="letranaranja"><?php the_title(); ?></h2>
+                                <?php the_content(); ?>
+                            </div>        
+                        </div>
+                    </div>
                 </div>
-             </div>
-        </div>
+            <?php $x++; if($x>=2){ $x=0; } endwhile; }  wp_reset_query(); ?>
     </div>
-    <div class="banner2">
-
-        <div class="container">
-
-            <div class="row">
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-                         
-                         
-				
-                                 
-            		<?php $x++; if ($x=='2' && $latag->name!='trabajo'){?></div> <div class="banner"></div> <?php  $x='0'; if($y=='0'){$y++;}else{$y--;} } }
-					} ?>
-			<?php endforeach; ?>
-</div>
 <?php get_footer(); ?>

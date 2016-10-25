@@ -1,66 +1,40 @@
 <?php get_header(); ?>
-<div class="banner6">
-</div>
-<div class="" style="margin-top:40px;">
-			<?php
-            $args = array('order'=> 'ASC','numberposts' => 1000 , 'orderby' => 'post_date', 'category_name' =>'certificaciones');
-            $postslist = get_posts( $args );
-            foreach ($postslist as $post) :  setup_postdata($post); 
-				$alltags=get_the_tags();
-				foreach($alltags as $latag){
-					
-					if( $latag->name=='derecha'){ ?>
-							<div class="container">
-								<div class="row">
-										  <div class="col-md-6 col-sm-12 wow fadeIn">
-                                          		<?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive wow fadeInLeft' , 'style' => 'padding-top: 4%' ) ); ?>
-										  </div>
-										  <div class="col-md-6 wow fadeIn">
-												<hr class="section-heading-spacer">
-												<div class="clearfix"></div>
-												<h2 class="section-heading"><?php the_title(); ?></h2>
-												<p class="lead"><?php the_content(); ?></p>
-										  </div>
-									 </div>
-    							</div>
-    						
-                            
-					<?php } if($latag->name=='izquierda'){ ?>
-							<div class="container">
-								<div class="row">
-										  <div class="col-md-6 wow fadeIn">
-												<hr class="section-heading-spacer">
-												<div class="clearfix"></div>
-												<h2 class="section-heading"><?php the_title(); ?></h2>
-												<p class="lead"><?php the_content(); ?></p>
-										  </div>
-										  <div class="col-md-4 col-md-offset-2 col-xs-12">
-                                          		<?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive wow fadeInRight' , 'style' => 'padding-top: 4%' ) ); ?>
-										  </div>
-								</div>
-    						</div>
-                            
-            		<?php }if($latag->name=='platinum'){ ?>
-                    
-     <div class="banner3">
-     <div class=" overlay">
+<?php global $mltlngg_current_language; $lenguaje=explode('_', $mltlngg_current_language)[0]; ?>
+    <div class="parallax-container ppag">
+        <div class=parallax> <img src=<?php echo get_bloginfo('template_directory');?>/img/p3.jpg> </div>
+    </div>
+    <div class="margintop50" id="certificaciones"> 
         <div class="container">
-			<div class="row">
-				<div class="col-md-6 col-xs-12">
-                     <?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive wow fadeInLeft' ) ); ?>
-				</div>
-                <div class="col-md-6 col-sm-12 wow fadeIn" data-wow-duration="900ms" data-wow-delay="350ms">
-                <br><br>
-                    <h2 class="section-heading"><?php the_title(); ?></h2>
-                    <p class="lead"><font class="" size="+1"><?php the_content(); ?></font></p>
-           		 </div>
-			</div>
+                        <?php if($lenguaje=='es'){ ?>
+                            <h2 class="letra1 tituloini letravacia quienesosmostitulo">Certificaciones</h2>
+                            <h2 class="letraazul letra1 tituloini quienesosmostitulo2">Certificaciones</h2>
+                        <? } else { ?>
+                            <h2 class="letra1 tituloini letravacia quienesosmostitulo">Certifications</h2>
+                            <h2 class="letraazul letra1 tituloini quienesosmostitulo2">Certifications</h2>
+                        <?php } ?>
         </div>
-        </div>
-     </div>
-            		<?php } } ?>
-					<br><br>
-			<?php endforeach; ?>
-</div>
-
+    </div>
+    <div class="margintop50">
+        <?php $args=array('post_status' => 'publish', 'posts_per_page' => 100, 'order' => 'ASC', 'post_type'=>'post', 'category_name'=>'certificaciones'); $my_query = new WP_Query($args);
+        if( $my_query->have_posts() ) {
+            $x=0;
+            while ($my_query->have_posts()) : 
+                $my_query->the_post();
+                $id = get_the_ID();
+                global $dynamic_featured_image;
+                $nth_image = $dynamic_featured_image -> get_all_featured_images( $id );
+                $num=count($nth_image); ?>
+                <div class="<?php if($x==1){ echo "fondogris cogbl"; } else { echo"cogtr";} ?>">
+                    <div class="container margintop25 paddingtop25 paddingbot25">
+                        <div class="row contenido">
+                            <div class="col-xs-12">
+                                <img src="<?php echo $nth_image[0]['full']; ?>" class="<?php if($x==0){ echo "left";} else { echo "right"; } ?> responsive-img z-depth-1">
+                                <h2 class="letranaranja"><?php the_title(); ?></h2>
+                                <?php the_content(); ?>
+                            </div>        
+                        </div>
+                    </div>
+                </div>
+            <?php $x++; if($x>=2){ $x=0; } endwhile; }  wp_reset_query(); ?>
+    </div>
 <?php get_footer(); ?>
