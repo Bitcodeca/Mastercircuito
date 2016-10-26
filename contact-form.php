@@ -26,25 +26,25 @@ if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['message']
     $mail->From = $_POST['email'];
     $mail->FromName = $_POST['nombre'];
     if ($motivo=='compra'){
-        //$mail->AddAddress("compras@mastercircuito.com");
-        $mail->AddAddress('bitcodemail@gmail.com');
+        $mail->AddAddress("compras@mastercircuito.com");
+        //$mail->AddAddress('bitcodemail@gmail.com');
     }
     if ($motivo=='venta'){
-        //$mail->AddAddress("ventas@mastercircuito.com");
-        //$mail->AddAddress("mastercircuitoventas@gmail.com");
-        $mail->AddAddress('bitcodemail@gmail.com');
+        $mail->AddAddress("ventas@mastercircuito.com");
+        $mail->AddAddress("mastercircuitoventas@gmail.com");
+        //$mail->AddAddress('bitcodemail@gmail.com');
     }
     if ($motivo=='gerencia'){
-       //$mail->AddAddress("mastercircuito@cantv.net");
-        $mail->AddAddress('bitcodemail@gmail.com');
+        $mail->AddAddress("mastercircuito@cantv.net");
+        //$mail->AddAddress('bitcodemail@gmail.com');
     }
     if ($motivo=='otro'){
-        //$mail->AddAddress("mastercircuito@cantv.net");
-        $mail->AddAddress('bitcodemail@gmail.com');
+        $mail->AddAddress("mastercircuito@cantv.net");
+        //$mail->AddAddress('bitcodemail@gmail.com');
     }
     if ($motivo=='gestion-de-calidad'){
-        //$mail->AddAddress("acalidad@mastercircuito.com");
-        $mail->AddAddress('bitcodemail@gmail.com');
+        $mail->AddAddress("acalidad@mastercircuito.com");
+        //$mail->AddAddress('bitcodemail@gmail.com');
     }
     
     $mail->Subject = $motivo.' '.$empresa;

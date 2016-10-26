@@ -101,7 +101,7 @@ function postproducto(){
    'show_in_admin_bar'=> true,
    'menu_position'=>4,
    'capability_type'=> 'page',
-   'supports'=> array( 'title', 'editor', 'thumbnail' ),
+   'supports'=> array( 'title', 'editor' ),
   'taxonomies' => array('grupo', 'idioma'),
    'query_var'=>true,
   );

@@ -10,7 +10,7 @@ app.controller('ContactController', function ($scope, $http, $compile) {
         if (contactform.$valid) {
             $http({
                 method  : 'POST',
-                url     : 'http://mastercircuitonuevo.bitcodeweb.com/wp-content/themes/prototipo/contact-form.php',
+                url     : "http://www.mastercircuito.com.ve/wp-content/themes/Mastercircuito v2/contact-form.php",
                 data    : $.param($scope.formData),
                 headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).success(function(data){

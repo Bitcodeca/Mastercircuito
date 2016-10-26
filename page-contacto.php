@@ -46,7 +46,7 @@
                                       <iframe id="map-canvas" src="https://www.google.com/maps/d/embed?mid=1H35J3MhHIIAZlynhYtdqIh4_NPA"></iframe>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-12 col-lg-4 text-center" style="margin-top:5%;">
+                            <div class="col-sm-12 col-md-12 col-lg-offset-1 col-lg-3 text-center" style="margin-top:5%;">
                                 <address>
                                     <h3 class="letra1 letraazul"><i class="material-icons verticalalign">inbox</i> Fax:</h3>
                                     <p class="lead">			
