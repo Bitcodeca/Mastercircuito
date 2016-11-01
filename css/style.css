@@ -162,6 +162,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     #quienessomos .tituloini { font-size: 8em; }
     nav ul a { padding: 0 10px; font-size: 0.9em; }
     .gmap-area p, .gmap-area h3 {text-align: center;}
+    .parallax img { width: 1400px !important; }
 }
 @media only screen and (max-width : 992px) {
     .inicio-titulo{ width: 70%; }
@@ -176,13 +177,10 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     #certificaciones .quienesosmostitulo {font-size: 7em !important;}
     #certificaciones .quienesosmostitulo2 {font-size: 6em !important;}
     footer table tr th p { font-size: 1.2em; }
-    .pini .parallax img { height: 450px; }
 }
 @media (max-width:601px){
     .inicio-titulo{ width: 85%; }
     .pini{height: 300px !important; }
-    .pini .paralllax img { height: 400px !important; }
-    .ppag .parallax img { height: 384px !important; }
     .letravacia { margin-left: -21px; font-size: 6em !important; margin-bottom: -70px; }
     .tituloini { font-size: 5em; }
     .gmap { width: 75vw; height: 75vw; }
@@ -194,6 +192,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     #certificaciones .quienesosmostitulo2 {font-size: 4em !important;}
     #certificaciones .letravacia {margin-bottom: -50px;}
     #quienessomos .letravacia { margin-bottom: -150px;}
+    .parallax img { width: 800px !important; }
 }
 @media (max-width:375px){
     .letravacia { margin-left: -21px; font-size: 5em !important; }

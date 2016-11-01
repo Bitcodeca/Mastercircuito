@@ -60,7 +60,7 @@
                         <div id="<?php echo $id; ?>" class="modal modal-fixed-footer">
                             <div class="modal-content">
                                 <h4><?php the_title(); ?></h4>
-                                        <?php for($x=0; $x<$num; $x++){ ?>
+                                        <?php for($x=1; $x<$num; $x++){ ?>
                                                  <img class="materialboxed responsive-img" src="<?php echo $nth_image[$x]['full']; ?>">
                                         <?php } ?>
                                 <?php the_content(); ?>
