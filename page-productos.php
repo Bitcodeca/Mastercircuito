@@ -20,18 +20,41 @@
     <div class="cogtr margintop50">
         <div class="cogbr">
             <div class="container">
-                <div class="fondogris paddingleft15 paddingright15 paddingtop10">
-                    <div class="row marginauto productos center-align">
-                        <form class="controls" id="Filters">
-                            <a class="waves-effect waves-light btn btn-mc amber darken-3 filter"  data-filter="*">Todos</a>
-                            <?php $grupo = get_terms( 'grupo', array( 'orderby' => 'name', 'hide_empty' => 1 ) );
-                            foreach ($grupo as $i) {
-                                $string = preg_replace('#[ /-]+#', '-', $i->name);
-                                echo '<a class="waves-effect waves-light btn btn-mc amber darken-3 filter" data-filter=".'.$string.'">'.$i->name.'</a>';
-                             } ?>
-                        </form>
-                    </div>
-                </div>
+
+                <?php
+                    if($lenguaje=='es'){
+                        ?>
+                        <div class="fondogris paddingleft15 paddingright15 paddingtop10">
+                            <div class="row marginauto productos center-align">
+                                <form class="controls" id="Filters">
+                                    <a class="waves-effect waves-light btn btn-mc amber darken-3 filter"  data-filter="*">Todos</a>
+                                    <?php $grupo = get_terms( 'grupo', array( 'orderby' => 'name', 'hide_empty' => 1 ) );
+                                    foreach ($grupo as $i) {
+                                        $string = preg_replace('#[ /-]+#', '-', $i->name);
+                                        echo '<a class="waves-effect waves-light btn btn-mc amber darken-3 filter" data-filter=".'.$string.'">'.$i->name.'</a>';
+                                     } ?>
+                                </form>
+                            </div>
+                        </div>
+                        <?php
+                    } else {
+                        ?>
+                        <div class="fondogris paddingleft15 paddingright15 paddingtop10">
+                            <div class="row marginauto productos center-align">
+                                <form class="controls" id="Filters">
+                                    <a class="waves-effect waves-light btn btn-mc amber darken-3 filter"  data-filter="*">All</a>
+                                    <?php $grupo = get_terms( 'grupoingles', array( 'orderby' => 'name', 'hide_empty' => 1 ) );
+                                    foreach ($grupo as $i) {
+                                        $string = preg_replace('#[ /-]+#', '-', $i->name);
+                                        echo '<a class="waves-effect waves-light btn btn-mc amber darken-3 filter" data-filter=".'.$string.'">'.$i->name.'</a>';
+                                     } ?>
+                                </form>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                ?>
+
                 <div class="row margintop25 pagproductos" id="Container">
                     <?php $args=array('post_status' => 'publish', 'posts_per_page' => 100, 'order' => 'DESC', 'post_type'=>'productos', 'tax_query' => array( array(  'taxonomy' => 'idioma', 'field' => 'slug', 'terms' => $idioma ) ) ); $my_query = new WP_Query($args);
                     if( $my_query->have_posts() ) {

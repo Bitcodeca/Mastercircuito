@@ -54,6 +54,34 @@ function taxonomiagrupo() {
 
 }
 
+
+////////////////////////
+// TAXONOMIA SUBGRUPO //
+//////////////////////
+add_action( 'init', 'taxonomiagrupoingles', 0 );
+function taxonomiagrupoingles() {
+  $labels = array(
+    'name' => _x( 'grupoingles', 'taxonomy general name' ),
+    'singular_name' => _x( 'Grupo', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Buscar grupo' ),
+    'all_items' => __( 'Todos los grupos' ),
+    'edit_item' => __( 'Editar grupo' ), 
+    'update_item' => __( 'Actualizar grupo' ),
+    'add_new_item' => __( 'Añadir grupo' ),
+    'new_item_name' => __( 'Nuevo grupo' ),
+    'menu_name' => __( 'Grupo Ingles' ),
+  );    
+  register_taxonomy('grupoingles', array('productos'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'grupoingles' ),
+  ));
+
+}
+
 ////////////////////////
 // TAXONOMIA IDIOMA //
 //////////////////////
