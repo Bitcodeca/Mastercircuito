@@ -63,11 +63,14 @@
                         $id = get_the_ID();
                         $grupoarray = get_the_terms( $post->ID , 'grupo' ); 
                         $grupo=$grupoarray[0]->name; 
+                        $grupoinglesarray = get_the_terms( $post->ID , 'grupoingles' ); 
+                        $grupoingles=$grupoinglesarray[0]->name; 
                         global $dynamic_featured_image;
                         $nth_image = $dynamic_featured_image -> get_all_featured_images( $id );
                         $num=count($nth_image);
-                        $string = preg_replace('#[ /-]+#', '-', $grupo);?>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 mix <?php echo $string; ?>">
+                        $string = preg_replace('#[ /-]+#', '-', $grupo);
+                        $string2 = preg_replace('#[ /-]+#', '-', $grupoingles);?>
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 mix <?php echo $string.' '.$string2; ?>">
                             <div class="card">
                                 <div class="card-image">
                                     <a class="modal-trigger" href="#<?php echo $id; ?>">
